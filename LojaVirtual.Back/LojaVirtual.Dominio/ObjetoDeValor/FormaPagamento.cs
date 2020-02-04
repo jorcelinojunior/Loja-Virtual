@@ -1,7 +1,4 @@
 ﻿using LojaVirtual.Dominio.Enumerados;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace LojaVirtual.Dominio.ObjetoDeValor
 {

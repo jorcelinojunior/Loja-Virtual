@@ -1,10 +1,11 @@
 ﻿using LojaVirtual.Dominio.ObjetoDeValor;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LojaVirtual.Dominio.Entidades
 {
-    public class Pedido
+    public class Pedido : Entidade
     {
         public int Id { get; set; }
         public DateTime DataPedido { get; set; }
@@ -22,5 +23,16 @@ namespace LojaVirtual.Dominio.Entidades
         /// ou muitos 'itens de pedidos'
         /// </summary>
         public ICollection<ItemPedido> ItensPedido{ get; set; }
+
+        public override void Validate()
+        {
+            LimparMensagemValidacao();
+
+            if (!ItensPedido.Any())
+                AdicionarCritica("'Pedido' não pode ficar sem 'Item de pedido'.");
+
+            if(string.IsNullOrEmpty(CEP))
+                AdicionarCritica("'CEP' não pode ficar vazio.");
+        }
     }
 }
