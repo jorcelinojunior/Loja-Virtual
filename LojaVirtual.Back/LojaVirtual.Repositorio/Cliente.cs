@@ -10,9 +10,9 @@ namespace LojaVirtual.Repositorio
     {
         public Cliente()
         {
-            var usuarioRepositorio = new UsuarioRepositorio();
-            var produto            = new Produto();
-            usuarioRepositorio.Adicionar(produto);
+            //var usuarioRepositorio = new UsuarioRepositorio();
+            //var produto            = new Produto();
+            //usuarioRepositorio.Adicionar(produto);
         }
     }
 }

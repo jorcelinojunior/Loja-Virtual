@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29503.13
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojaVirtual.Dominio", "LojaVirtual.Dominio\LojaVirtual.Dominio.csproj", "{FC24E04E-3484-453F-B95F-73655199D92F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LojaVirtual.Dominio", "LojaVirtual.Dominio\LojaVirtual.Dominio.csproj", "{FC24E04E-3484-453F-B95F-73655199D92F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojaVirtual.Repositorio", "LojaVirtual.Repositorio\LojaVirtual.Repositorio.csproj", "{B2D5BD46-9B22-4C36-9CEC-2C096BC3CD3F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "LojaVirtual.Repositorio", "LojaVirtual.Repositorio\LojaVirtual.Repositorio.csproj", "{B2D5BD46-9B22-4C36-9CEC-2C096BC3CD3F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LojaVirtual.API", "LojaVirtual.API\LojaVirtual.API.csproj", "{D4D6C432-4696-4834-BEB9-BEAF9C8D0CD0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{B2D5BD46-9B22-4C36-9CEC-2C096BC3CD3F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{B2D5BD46-9B22-4C36-9CEC-2C096BC3CD3F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{B2D5BD46-9B22-4C36-9CEC-2C096BC3CD3F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{D4D6C432-4696-4834-BEB9-BEAF9C8D0CD0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{D4D6C432-4696-4834-BEB9-BEAF9C8D0CD0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{D4D6C432-4696-4834-BEB9-BEAF9C8D0CD0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{D4D6C432-4696-4834-BEB9-BEAF9C8D0CD0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
