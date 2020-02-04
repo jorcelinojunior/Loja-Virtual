@@ -47,7 +47,7 @@ namespace LojaVirtual.Web
             app.UseStaticFiles();
             app.UseSpaStaticFiles();
 
-            app.UseMvc(routes =>
+            app.UseMvc(routes => 
             {
                 routes.MapRoute(
                     name: "default",
