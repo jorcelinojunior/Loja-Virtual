@@ -8,8 +8,8 @@ namespace LojaVirtual.Repositorio.Repositorios
 {
     public class BaseRepositorio<TEntity> : IBaseRepositorio<TEntity> where TEntity : class
     {
-
-        public BaseRepositorio()
+        protected readonly LojaVirtualContexto LojaVirtualContexto;
+        public BaseRepositorio(LojaVirtualContexto lojaVirtualContexto)
         {
             LojaVirtualContexto = lojaVirtualContexto;
         }
