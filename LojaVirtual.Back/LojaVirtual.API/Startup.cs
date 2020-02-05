@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using LojaVirtual.Dominio.Contratos;
 using LojaVirtual.Repositorio.Contexto;
+using LojaVirtual.Repositorio.Repositorios;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -30,10 +32,12 @@ namespace LojaVirtual.API
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
             var connectionString = Configuration.GetConnectionString("LojaVirtual");
-            services.AddDbContext<LojaVirtualContexto>(option => 
+            services.AddDbContext<LojaVirtualContexto>(option =>
                                                             option.UseLazyLoadingProxies()
                                                             .UseMySql(connectionString, m =>
                                                                                                 m.MigrationsAssembly("LojaVirtual.Repositorio")));
+            // Fazendo infeção de dependência  
+            services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

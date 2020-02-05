@@ -1,6 +1,8 @@
 ﻿using LojaVirtual.Dominio.Contratos;
+using LojaVirtual.Repositorio.Contexto;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace LojaVirtual.Repositorio.Repositorios
 {
@@ -9,37 +11,40 @@ namespace LojaVirtual.Repositorio.Repositorios
 
         public BaseRepositorio()
         {
-
+            LojaVirtualContexto = lojaVirtualContexto;
         }
          
         public void Adicionar(TEntity entity)
         {
-            throw new NotImplementedException();
+            LojaVirtualContexto.Set<TEntity>().Add(entity);
+            LojaVirtualContexto.SaveChanges();
         }
 
         public void Atualizar(TEntity entity)
         {
-            throw new NotImplementedException();
+            LojaVirtualContexto.Set<TEntity>().Update(entity);
+            LojaVirtualContexto.SaveChanges();
         }
 
         public TEntity ObterPorId(int id)
         {
-            throw new NotImplementedException();
+            return LojaVirtualContexto.Set<TEntity>().Find(id);
         }
 
         public IEnumerable<TEntity> ObterTodos()
         {
-            throw new NotImplementedException();
+            return LojaVirtualContexto.Set<TEntity>().ToList();
         }
 
         public void Remover(TEntity entity)
         {
-            throw new NotImplementedException();
+            LojaVirtualContexto.Remove(entity);
+            LojaVirtualContexto.SaveChanges();
         }
       
         public void Dispose()
         {
-            throw new NotImplementedException();
+            LojaVirtualContexto.Dispose();
         }
     }
 }
