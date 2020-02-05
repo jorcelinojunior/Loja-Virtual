@@ -28,6 +28,11 @@ namespace LojaVirtual.Repositorio.Contexto
             modelBuilder.ApplyConfiguration(new ItemPedidoConfiguration());
             modelBuilder.ApplyConfiguration(new FormaPagamentoConfiguration());
 
+            // Adicionando carga de formas de pagamento ao banco de dados 
+            modelBuilder.Entity<FormaPagamento>().HasData(new FormaPagamento() { Id = 1, Nome = "Boleto", Descricao = "Descrição do Boleto aqui." });
+            modelBuilder.Entity<FormaPagamento>().HasData(new FormaPagamento() { Id = 2, Nome = "Cartão de Crédito", Descricao = "Descrição do Cartão de Crédito aqui." });
+            modelBuilder.Entity<FormaPagamento>().HasData(new FormaPagamento() { Id = 3, Nome = "Depósito", Descricao = "Descrição do Depósito aqui." });
+
             base.OnModelCreating(modelBuilder);
         }
     }
