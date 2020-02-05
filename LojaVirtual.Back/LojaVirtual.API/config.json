@@ -1,0 +1,7 @@
+{
+  "ConnectionStrings": {
+    "LojaVirtual": "server=127.0.0.1;uid=root;pwd=;database=LojaVirtual",
+    "SqlServerConnection": ""
+  }
+}
+
