@@ -31,7 +31,7 @@ import { LoginComponent } from './usuario/login/login.component';
       { path: 'counter', component: CounterComponent },
       { path: 'fetch-data', component: FetchDataComponent },
       { path: 'produto', component: ProdutoComponent },
-      { path: 'usuario/login', component: LoginComponent },
+      { path: 'entrar', component: LoginComponent },
 
     ])
   ],
