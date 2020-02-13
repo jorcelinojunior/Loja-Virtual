@@ -1,0 +1,24 @@
+import { Injectable } from '@angular/core';
+import { Router, CanActivate, RouterStateSnapshot, ActivatedRouteSnapshot } from '@angular/router';
+
+
+@Injectable({
+  providedIn: 'root',
+
+})
+
+export class GuardaRotas implements CanActivate {
+
+  constructor(private router: Router) {
+
+  }
+
+  canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot): boolean  {
+    this.router.navigate(['/entrar']);
+    // se usuario autenticado
+    return false;
+  }
+
+
+
+}
