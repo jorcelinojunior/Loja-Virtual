@@ -1,4 +1,5 @@
-﻿using LojaVirtual.Dominio.Entidades;
+﻿using LojaVirtual.Dominio.Contratos;
+using LojaVirtual.Dominio.Entidades;
 using Microsoft.AspNetCore.Mvc;
 using System;
 
@@ -7,6 +8,12 @@ namespace LojaVirtual.API.Controllers
     [Route("api/[Controller]")]
     public class UsuarioController : Controller
     {
+        private readonly IUsuarioRepositorio _usuarioRepositorio;
+        public UsuarioController(IUsuarioRepositorio usuarioRepositorio)
+        {
+            _usuarioRepositorio = usuarioRepositorio;
+        }
+
         [HttpGet]
         public ActionResult Get()
         {
@@ -25,10 +32,13 @@ namespace LojaVirtual.API.Controllers
         {
             try
             {   
-                if(usuario.Email == "jorcelino@live.com" && usuario.Senha == "123")
-                    return Ok(usuario);
+                var usuarioRetorno = _usuarioRepositorio.Obter(usuario.Email, usuario.Senha);
+
+                //if(usuario.Email == "jorcelino@live.com" && usuario.Senha == "123")
+                if(usuarioRetorno != null)
+                    return Ok(usuarioRetorno);
                  
-                return BadRequest("Usuário e/ou senha inválido");
+                return BadRequest("Usuário e/ou senha inválido.");
             }
             catch(Exception ex)
             {

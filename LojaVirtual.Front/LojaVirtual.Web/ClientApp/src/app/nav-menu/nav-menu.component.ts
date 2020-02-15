@@ -1,39 +1,33 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { UsuarioServico } from '../servicos/usuario/usuario.servico';
 
 @Component({
-  selector: 'app-nav-menu',
-  templateUrl: './nav-menu.component.html',
-  styleUrls: ['./nav-menu.component.css']
+    selector: 'app-nav-menu',
+    templateUrl: './nav-menu.component.html',
+    styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
-  isExpanded = false;
+    isExpanded = false;
 
-  constructor(private router: Router){
+    constructor(private router: Router, private usuarioServico: UsuarioServico) {
 
-  }
+    }
 
-  collapse() {
-    this.isExpanded = false;
-  }
+    collapse() {
+        this.isExpanded = false;
+    }
 
-  toggle() {
-    this.isExpanded = !this.isExpanded;
-  }
+    toggle() {
+        this.isExpanded = !this.isExpanded;
+    }
 
-  public usuarioLogado(): boolean {
-    //  const usuarioLogado = sessionStorage.getItem('usuario-autenticado');
-    //  if (usuarioLogado == '1') {
-    //   return true;
-    //  }
-    //  return false;
-    
-    return sessionStorage.getItem('usuario-autenticado') == '1';
-  }
+    public usuarioLogado(): boolean {
+        return this.usuarioServico.usuario_autenticado();
+    }
 
-  sair() {
-    //console.log("saiu");
-    sessionStorage.setItem('usuario-autenticado', '');
-    this.router.navigate(['/entrar']);
-  }
+    sair() {
+        this.usuarioServico.limpar_sessao();
+        this.router.navigate(['/entrar']);
+    }
 }
