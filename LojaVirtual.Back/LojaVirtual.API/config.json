@@ -1,6 +1,7 @@
 {
   "ConnectionStrings": {
     "LojaVirtual": "server=127.0.0.1;uid=root;pwd=;database=LojaVirtual",
+    "FreeRemoteMySql": "server=remotemysql.com;uid=ZWodles2qA;pwd=d75ik1TC6S;database=ZWodles2qA",
     "SqlServerConnection": ""
   }
 }
