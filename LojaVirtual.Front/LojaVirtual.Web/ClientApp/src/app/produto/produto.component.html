@@ -1,0 +1,60 @@
+<form class="form-signin">
+    <h1 class="h4">Cadastro de Produto</h1>
+
+    <div class="form-label-group">
+        <input type="text" id="inputNome"
+               name="nome" placeholder="Nome do produto"
+               class="form-control"
+               [ngClass]="{
+        'is-invalid': nome.invalid && (nome.dirty || nome.touched),
+        'is-valid': nome.valid && (nome.dirty || nome.touched)
+      }"
+               [(ngModel)]="this.produto.nome"
+               #nome="ngModel"
+               required />
+
+        <div class="invalid-feedback" *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+            <div *ngIf="nome.errors.required">O nome do produto deve ser preenchido.</div>
+        </div>
+
+        <label for="inputNome">Nome do produto</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="text" id="inputDescricao"
+               name="descricao" placeholder="Descrição"
+               class="form-control"
+               [ngClass]="{
+        'is-invalid': descricao.invalid && (descricao.dirty || descricao.touched),
+        'is-valid': descricao.valid && (descricao.dirty || descricao.touched)
+      }"
+               [(ngModel)]="this.produto.descricao"
+               #descricao="ngModel"
+               required />
+
+        <div class="invalid-feedback" *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
+            <div *ngIf="descricao.errors.required">A descrição do produto deve ser preenchido.</div>
+        </div>
+
+        <label for="inputDescricao">Descrição do produto</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="text" id="inputPreco"
+               name="preco" placeholder="Preço"
+               class="form-control"
+               [ngClass]="{
+        'is-invalid': preco.invalid && (preco.dirty || preco.touched),
+        'is-valid': preco.valid && (preco.dirty || preco.touched)
+      }"
+               [(ngModel)]="this.produto.preco"
+               #preco="ngModel"
+               required />
+
+        <div class="invalid-feedback" *ngIf="preco.invalid && (preco.dirty || preco.touched)">
+            <div *ngIf="preco.errors.required">O preço do produto deve ser preenchido.</div>
+        </div>
+
+        <label for="inputPreco">Preço do produto</label>
+    </div>
+</form>

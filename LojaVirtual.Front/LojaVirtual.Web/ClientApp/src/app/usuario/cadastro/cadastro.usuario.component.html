@@ -1,7 +1,46 @@
 <form class="form-signin" *ngIf="!this.usuarioAutenticado">
     <div class="text-center mb-4">
         <img class="mb-4" src="./../../../assets/images/logo-1.png" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Login do Cliente</h1>
+        <h1 class="h3 mb-3 font-weight-normal">Criar Conta</h1>
+    </div>
+
+    <div class="form-label-group">
+        <input type="text" id="inputNome"
+               name="nome" placeholder="Nome"
+               class="form-control"
+               [ngClass]="{
+        'is-invalid': nome.invalid && (nome.dirty || nome.touched),
+        'is-valid': nome.valid && (nome.dirty || nome.touched)
+      }"
+               #nome="ngModel"
+               [(ngModel)]="this.usuario.nome"
+               required />
+
+        <div class="invalid-feedback" *ngIf="nome.invalid && (nome.dirty || nome.touched)">
+            <div *ngIf="nome.errors.required">O nome deve ser preenchido.</div>
+        </div>
+
+        <label for="inputNome">Nome</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="text" id="inputSobreNome"
+               name="sobreNome" placeholder="Sobrenome"
+               class="form-control"
+               [ngClass]="{
+        'is-invalid': sobreNome.invalid && (sobreNome.dirty || sobreNome.touched),
+        'is-valid': sobreNome.valid && (sobreNome.dirty || sobreNome.touched)
+      }"
+               #sobreNome="ngModel"
+               [(ngModel)]="this.usuario.sobreNome"
+               (keypress)="on_keypress()"
+               required />
+
+        <div class="invalid-feedback" *ngIf="sobreNome.invalid && (sobreNome.dirty || sobreNome.touched)">
+            <div *ngIf="sobreNome.errors.required">O sobrenome deve ser preenchido.</div>
+        </div>
+
+        <label for="inputSobreNome">Sobrenome</label>
     </div>
 
     <div class="form-label-group">
@@ -20,7 +59,7 @@
 
         <div class="invalid-feedback" *ngIf="email.invalid && (email.dirty || email.touched)">
             <div *ngIf="email.errors.required">O email deve ser preenchido.</div>
-            <div *ngIf="email.errors.email">O email est√° em um formato inv√°lido.</div>
+            <div *ngIf="email.errors.email">O email est· em um formato inv·lido.</div>
         </div>
 
         <label for="inputEmail">Email</label>
@@ -45,10 +84,13 @@
         <label for="inputSenha">Senha</label>
     </div>
 
-    <button class="btn btn-primary btn-block" type="submit" (click)="entrar()" [disabled]="ativar_spinner">
+
+
+    <button class="btn btn-primary btn-block" type="submit" (click)="cadastrar()" [disabled]="ativar_spinner || !formIsValid()">
         <span *ngIf="ativar_spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-        <span *ngIf="!ativar_spinner">Entrar</span>
+        <span *ngIf="!ativar_spinner">Cadastrar</span>
     </button>
+    <div class="d-block text-center mt-3"><a [routerLink]='["/entrar"]'>Voltar</a> </div>
 
     <div class="alert alert-danger mt-3 text-center" *ngIf="mensagem">
         {{mensagem}}

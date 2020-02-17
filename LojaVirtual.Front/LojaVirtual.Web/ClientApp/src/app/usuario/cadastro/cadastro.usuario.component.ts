@@ -20,14 +20,31 @@ export class CadastroUsuarioComponent implements OnInit {
     }
 
     public cadastrar() {
-        this.usuarioServico.cadastrarUSuario(this.usuario)
-            .subscribe(
-                usuarioJson => {
+        alert("Nome: " + this.usuario.nome + "\nSobrenome: " + this.usuario.sobreNome + "\nEmail: " + this.usuario.email + "\nSenha: " + this.usuario.senha);
+        //this.usuarioServico.cadastrarUSuario(this.usuario)
+        //    .subscribe(
+        //        usuarioJson => {
                     
-                },
-                err => {
+        //        },
+        //        err => {
 
-                }
-            );
+        //        }
+        //    );
+    }
+
+    public formIsValid() {
+        if (this.usuario.nome == null || this.usuario.nome == "")
+            return false;
+        
+        if (this.usuario.sobreNome == null || this.usuario.sobreNome == "")
+            return false;
+        
+        if (this.usuario.email == null || this.usuario.email == "")
+            return false;
+        
+        if (this.usuario.senha == null || this.usuario.senha == "")
+            return false;
+
+        return true;
     }
 }
