@@ -34,30 +34,21 @@ export class LoginComponent implements OnInit {
             .subscribe(
                 usuario_json => {
                     //executado caso não aconteça erro, usuário válido
-                    
+                    this.ativar_spinner = false;
                     this.usuarioServico.usuario = usuario_json;
-
-                    alert(this.returnUrl);
 
                     if(this.returnUrl == null)
                         this.router.navigate(['/']);
                     else
                         this.router.navigate([this.returnUrl]);
 
-                    this.ativar_spinner = false;
                 },
                 err => {
                     // executado caso ocorra erro, usuário/senha
-                    this.mensagem = err.error;
                     this.ativar_spinner = false;
+                    this.mensagem = err.error;
                 }
             );
-
-
-        //if (this.usuario.email === 'jorcelino@live.com' && this.usuario.senha === '123') {
-        //  sessionStorage.setItem('usuario-autenticado', '1');
-        //  this.router.navigate([this.returnUrl]);
-        //}
     }
 
     on_keypress(event: any): void {

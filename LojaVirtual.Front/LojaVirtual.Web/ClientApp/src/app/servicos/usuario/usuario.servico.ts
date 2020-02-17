@@ -7,10 +7,8 @@ import { Usuario } from "../../Model/usuario";
     providedIn: 'root'
 })
 export class UsuarioServico {
-
     private baseUrl: string;
     private _usuario: Usuario;
-
 
     constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
         this.baseUrl = "https://localhost:44321/";
@@ -27,6 +25,10 @@ export class UsuarioServico {
         return this._usuario;
     }
 
+    get headers(): HttpHeaders {
+        return new HttpHeaders().set('content-type', 'application/json');
+    }
+
     public usuario_autenticado(): boolean {
         return this._usuario != null && this._usuario.email != "" && this._usuario.senha != "";
     }
@@ -37,24 +39,11 @@ export class UsuarioServico {
     }
 
     public verificarUsuario(usuario: Usuario): Observable<Usuario> {
-        const headers = new HttpHeaders().set('content-type', 'application/json');
-        var body = {
-            email: usuario.email,
-            senha: usuario.senha
-        }
-        // this.baseUrl = raiz do site que pode ser exemplo.: http://www.meusite.com.br/
-        return this.http.post<Usuario>(this.baseUrl + "api/usuario/verificarUsuario", body, { headers });
+        return this.http.post<Usuario>(this.baseUrl + "api/usuario/verificarUsuario", JSON.stringify(usuario), { headers: this.headers });
     }
 
-    public cadastrarUSuario(usuario: Usuario): Observable<Usuario> {
-        const headers = new HttpHeaders().set('content-type', 'application/json');
-        var body = {
-            email: usuario.email,
-            senha: usuario.senha,
-            nome: usuario.nome,
-            sobrenome: usuario.sobreNome
-        }
-        return this.http.post<Usuario>(this.baseUrl + "api/usuario", body, { headers });
+    public cadastrarUsuario(usuario: Usuario): Observable<Usuario> {
+        return this.http.post<Usuario>(this.baseUrl + "api/usuario", JSON.stringify(usuario), { headers: this.headers });
     }
 
 }

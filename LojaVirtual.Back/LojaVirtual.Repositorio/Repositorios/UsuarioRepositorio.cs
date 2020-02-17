@@ -15,5 +15,9 @@ namespace LojaVirtual.Repositorio.Repositorios
         {
             return LojaVirtualContexto.Usuarios.FirstOrDefault(u => u.Email == email && u.Senha == senha);
         }
+        public Usuario Obter(string email)
+        {
+            return LojaVirtualContexto.Usuarios.FirstOrDefault(u => u.Email == email);
+        }
     }
 }

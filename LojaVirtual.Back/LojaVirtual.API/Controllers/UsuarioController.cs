@@ -47,10 +47,15 @@ namespace LojaVirtual.API.Controllers
         }
 
         [HttpPost]
-        public ActionResult Post()
+        public ActionResult Post([FromBody] Usuario usuario)
         {
             try
             {
+                var usuarioCadastrado = _usuarioRepositorio.Obter(usuario.Email);
+                if(usuarioCadastrado != null)
+                    return BadRequest("Usuário já cadastrado no sistema.");
+                
+                _usuarioRepositorio.Adicionar(usuario);
                 return Ok();
             }
             catch(Exception ex)

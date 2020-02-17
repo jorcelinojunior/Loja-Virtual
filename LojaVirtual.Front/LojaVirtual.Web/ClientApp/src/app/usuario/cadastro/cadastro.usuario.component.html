@@ -1,4 +1,4 @@
-<form class="form-signin" *ngIf="!this.usuarioAutenticado">
+<form class="form-signin" *ngIf="!this.usuarioAutenticado && !this.usuarioCadastrado" >
     <div class="text-center mb-4">
         <img class="mb-4" src="./../../../assets/images/logo-1.png" alt="" width="72" height="72">
         <h1 class="h3 mb-3 font-weight-normal">Criar Conta</h1>
@@ -33,7 +33,6 @@
       }"
                #sobreNome="ngModel"
                [(ngModel)]="this.usuario.sobreNome"
-               (keypress)="on_keypress()"
                required />
 
         <div class="invalid-feedback" *ngIf="sobreNome.invalid && (sobreNome.dirty || sobreNome.touched)">
@@ -53,13 +52,12 @@
       }"
                #email="ngModel"
                [(ngModel)]="this.usuario.email"
-               (keypress)="on_keypress()"
                email
                required />
 
         <div class="invalid-feedback" *ngIf="email.invalid && (email.dirty || email.touched)">
             <div *ngIf="email.errors.required">O email deve ser preenchido.</div>
-            <div *ngIf="email.errors.email">O email est· em um formato inv·lido.</div>
+            <div *ngIf="email.errors.email">O email est√° em um formato inv√°lido.</div>
         </div>
 
         <label for="inputEmail">Email</label>
@@ -84,8 +82,6 @@
         <label for="inputSenha">Senha</label>
     </div>
 
-
-
     <button class="btn btn-primary btn-block" type="submit" (click)="cadastrar()" [disabled]="ativar_spinner || !formIsValid()">
         <span *ngIf="ativar_spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
         <span *ngIf="!ativar_spinner">Cadastrar</span>
@@ -97,8 +93,16 @@
     </div>
 </form>
 
-<form class="form-signin">
-    <div class="alert alert-success text-center d-block" role="alert" *ngIf="this.usuarioAutenticado">
-        <h1 class="h5">Usu·rio Autenticado! </h1>
+<form class="form-signin" *ngIf="this.usuarioCadastrado">
+    <div class="text-center mb-4">
+        <img class="mb-4" src="./../../../assets/images/logo-1.png" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Criar Conta</h1>
     </div>
+
+    <div class="alert alert-success text-center d-block mt-3">
+        <span class="d-block">Usu√°rio cadastrado com sucesso!</span>
+        <a class="alert-link" [routerLink]='["/entrar"]'>Clique aqui para entrar.</a>
+    </div>
+
+    <div class="d-block text-center mt-3"><a [routerLink]='["/entrar"]'>Voltar</a> </div>
 </form>

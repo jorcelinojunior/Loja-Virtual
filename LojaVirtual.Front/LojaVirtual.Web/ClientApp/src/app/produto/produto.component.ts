@@ -23,17 +23,17 @@ export class ProdutoComponent implements OnInit { // Padrão adotado por conven�
     public cadastrar() {
         this.ativar_spinner = true;
         alert("Nome: " + this.produto.nome + "\nDescrição: " + this.produto.descricao + "\nPreço: " + this.produto.preco);
-        //this.produtoServico.cadastrar(this.produto)
-        //    .subscribe(
-        //        produtoJson => {
-        //            console.log(produtoJson);
-        //            this.ativar_spinner = false;
-        //        },
-        //        err => {
-        //            console.log(err.error);
-        //            this.ativar_spinner = false;
-        //        }
-        //    );
+        this.produtoServico.cadastrar(this.produto)
+            .subscribe(
+                produtoJson => {
+                    console.log(produtoJson);
+                    this.ativar_spinner = false;
+                },
+                err => {
+                    console.log(err.error);
+                    this.ativar_spinner = false;
+                }
+            );
     }
 
     public formIsValid() {

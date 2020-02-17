@@ -15,12 +15,12 @@ namespace LojaVirtual.Repositorio.Config
             builder
                 .Property(u => u.Nome)
                 .IsRequired()
-                .HasMaxLength(20);
+                .HasMaxLength(100);
 
             builder
                 .Property(u => u.SobreNome)
                 .IsRequired()
-                .HasMaxLength(50);
+                .HasMaxLength(100);
 
             builder
                 .Property(u => u.Email)
