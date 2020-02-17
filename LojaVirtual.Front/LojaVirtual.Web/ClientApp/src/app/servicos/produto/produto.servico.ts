@@ -38,7 +38,7 @@ export class ProdutoServico implements OnInit {
         const headers = new HttpHeaders().set("content-type", "application/json");
         var body = {
             nome: produto.nome,
-            descricao: produto.Descricao,
+            descricao: produto.descricao,
             preco: produto.preco
         }
         return this.http.post<Produto>(this.baseUrl + "api/produto/deletar", body, { headers });
