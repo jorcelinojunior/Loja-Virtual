@@ -37,7 +37,7 @@ export class LoginComponent implements OnInit {
                     this.ativar_spinner = false;
                     this.usuarioServico.usuario = usuario_json;
 
-                    if(this.returnUrl == null)
+                    if (this.returnUrl == null)
                         this.router.navigate(['/']);
                     else
                         this.router.navigate([this.returnUrl]);
@@ -50,11 +50,4 @@ export class LoginComponent implements OnInit {
                 }
             );
     }
-
-    on_keypress(event: any): void {
-        console.log('email: ' + this.usuario.email + ' - senha:' + this.usuario.senha);
-    }
-
-
-
 }

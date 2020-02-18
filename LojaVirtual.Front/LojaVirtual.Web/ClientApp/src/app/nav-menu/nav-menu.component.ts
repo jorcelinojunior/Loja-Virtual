@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { UsuarioServico } from '../servicos/usuario/usuario.servico';
+import { Usuario } from '../Model/usuario';
 
 @Component({
     selector: 'app-nav-menu',
@@ -8,7 +9,8 @@ import { UsuarioServico } from '../servicos/usuario/usuario.servico';
     styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
-    isExpanded = false;
+    public isExpanded = false;
+    //public usuario: string = "junior";
 
     constructor(private router: Router, private usuarioServico: UsuarioServico) {
 
@@ -29,5 +31,9 @@ export class NavMenuComponent {
     sair() {
         this.usuarioServico.limpar_sessao();
         this.router.navigate(['/entrar']);
+    }
+
+    get usuario()  {
+        return this.usuarioServico.usuario;
     }
 }

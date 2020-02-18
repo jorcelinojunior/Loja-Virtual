@@ -20,7 +20,7 @@ export class UsuarioServico {
     }
 
     get usuario(): Usuario {
-        let usuario_json = localStorage.getItem("usuario-autenticado");
+        let usuario_json = sessionStorage.getItem("usuario-autenticado");
         this._usuario = JSON.parse(usuario_json);
         return this._usuario;
     }

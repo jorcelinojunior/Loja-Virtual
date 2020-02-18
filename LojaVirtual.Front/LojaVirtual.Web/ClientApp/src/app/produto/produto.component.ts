@@ -10,7 +10,8 @@ import { Produto } from "../Model/produto";
 
 export class ProdutoComponent implements OnInit { // Padrão adotado por convenção de PascalCase
     public produto: Produto;
-    private ativar_spinner = false;
+    private ativar_spinner: boolean;
+    public arquivoSelecionado: File;
 
     constructor(private produtoServico: ProdutoServico) {
 
@@ -20,17 +21,28 @@ export class ProdutoComponent implements OnInit { // Padrão adotado por conven�
         this.produto = new Produto();
     }
 
-    public cadastrar() {
-        this.ativar_spinner = true;
-        alert("Nome: " + this.produto.nome + "\nDescrição: " + this.produto.descricao + "\nPreço: " + this.produto.preco);
-        this.produtoServico.cadastrar(this.produto)
+    public inputChange(files: FileList) {
+        this.arquivoSelecionado = files.item(0);
+        //alert(this.arquivoSelecionado.name);
+        this.produtoServico.enviarArquivo(this.arquivoSelecionado)
             .subscribe(
-                produtoJson => {
-                    console.log(produtoJson);
-                    this.ativar_spinner = false;
+                success => {
+                    console.log(success);
                 },
                 err => {
                     console.log(err.error);
+                }
+            );
+    }
+
+    public cadastrar() {
+        this.ativar_spinner = true;
+        this.produtoServico.cadastrar(this.produto)
+            .subscribe(
+                produtoJson => {
+                    this.ativar_spinner = false;
+                },
+                err => {
                     this.ativar_spinner = false;
                 }
             );
@@ -43,9 +55,11 @@ export class ProdutoComponent implements OnInit { // Padrão adotado por conven�
         if (this.produto.descricao == null || this.produto.descricao == "")
             return false;
 
-        if (this.produto.preco == null || this.produto.preco < 0 )
+        if (this.produto.preco == null || this.produto.preco < 0)
             return false;
 
         return true;
     }
+
+
 }
