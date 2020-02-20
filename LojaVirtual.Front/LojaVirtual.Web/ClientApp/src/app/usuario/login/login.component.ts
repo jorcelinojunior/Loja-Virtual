@@ -33,18 +33,19 @@ export class LoginComponent implements OnInit {
         this.usuarioServico.verificarUsuario(this.usuario)
             .subscribe(
                 usuario_json => {
-                    //executado caso não aconteça erro, usuário válido
+                    //executado caso nï¿½o aconteï¿½a erro, usuï¿½rio vï¿½lido
                     this.ativar_spinner = false;
                     this.usuarioServico.usuario = usuario_json;
 
-                    if (this.returnUrl == null)
+                    if (this.returnUrl == null) {
                         this.router.navigate(['/']);
-                    else
+                    } else {
                         this.router.navigate([this.returnUrl]);
+                    }
 
                 },
                 err => {
-                    // executado caso ocorra erro, usuário/senha
+                    // executado caso ocorra erro, usuï¿½rio/senha
                     this.ativar_spinner = false;
                     this.mensagem = err.error;
                 }
