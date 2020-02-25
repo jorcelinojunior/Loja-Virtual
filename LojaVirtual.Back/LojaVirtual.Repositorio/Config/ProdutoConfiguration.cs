@@ -23,7 +23,12 @@ namespace LojaVirtual.Repositorio.Config
 
             builder
                 .Property(p => p.Preco)
+                .HasColumnType("decimal(19,4)")
                 .IsRequired();
+
+            builder
+                .Property(p => p.NomeArquivo)
+                .HasMaxLength(200);
 
 
         }

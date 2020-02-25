@@ -12,16 +12,20 @@ namespace LojaVirtual.Dominio.Entidades
         }
 
         public abstract void Validate();
-        protected bool EhValido {
-            get { return !mensagemValidacao.Any(); }
-        }
         protected void LimparMensagemValidacao()
         {
             mensagemValidacao.Clear();
         }
         protected void AdicionarCritica(string mensagem)
         {
-            mensagemValidacao.Add("Crítica: " + mensagem);
+            mensagemValidacao.Add(" *" + mensagem);
+        }
+        public string ObterMensagensValidacao()
+        {
+            return string.Join("\n", mensagemValidacao);
+        }
+        public bool EhValido {
+            get { return !mensagemValidacao.Any(); }
         }
     }
 }

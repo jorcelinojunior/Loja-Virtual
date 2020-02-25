@@ -73,5 +73,9 @@
         <span *ngIf="this.ativar_spinner"> Cadastrando</span>
     </button>
 
+    <div class="alert alert-danger mt-3 text-center" *ngIf="mensagem">
+      {{mensagem}}
+    </div>
+
 
 </form>

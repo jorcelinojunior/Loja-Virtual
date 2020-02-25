@@ -47,8 +47,8 @@ namespace LojaVirtual.API
                 options.Filters.Add(new CorsAuthorizationFilterFactory("MyPolicy"));
             });
 
-            //var connectionString = Configuration.GetConnectionString("LojaVirtual");
-            var connectionString = Configuration.GetConnectionString("FreeRemoteMySql");
+            var connectionString = Configuration.GetConnectionString("LojaVirtual");
+            //var connectionString = Configuration.GetConnectionString("FreeRemoteMySql");
             services.AddDbContext<LojaVirtualContexto>(option =>
                                                             option.UseLazyLoadingProxies()
                                                             .UseMySql(connectionString, m =>

@@ -1,11 +1,11 @@
-﻿import { Component, OnInit } from "@angular/core";
-import { Usuario } from "../../Model/usuario";
-import { UsuarioServico } from "../../servicos/usuario/usuario.servico";
+﻿import { Component, OnInit } from '@angular/core';
+import { Usuario } from '../../Model/usuario';
+import { UsuarioServico } from '../../servicos/usuario/usuario.servico';
 
 @Component({
-    selector: "cadastro-usuario",
-    templateUrl: "./cadastro.usuario.component.html",
-    styleUrls: ["./cadastro.usuario.component.css"]
+    selector: 'cadastro-usuario',
+    templateUrl: './cadastro.usuario.component.html',
+    styleUrls: ['./cadastro.usuario.component.css']
 })
 
 export class CadastroUsuarioComponent implements OnInit {
@@ -24,12 +24,11 @@ export class CadastroUsuarioComponent implements OnInit {
 
     public cadastrar() {
         this.ativar_spinner = true;
-
         this.usuarioServico.cadastrarUsuario(this.usuario)
             .subscribe(
                 usuarioJson => {
                     this.usuarioCadastrado = true;
-                    this.mensagem = "";
+                    this.mensagem = '';
                     this.ativar_spinner = false;
                 },
                 err => {
@@ -41,18 +40,12 @@ export class CadastroUsuarioComponent implements OnInit {
     }
 
     public formIsValid() {
-        if (this.usuario.nome == null || this.usuario.nome == "")
-            return false;
-
-        if (this.usuario.sobreNome == null || this.usuario.sobreNome == "")
-            return false;
-
-        if (this.usuario.email == null || this.usuario.email == "")
-            return false;
-
-        if (this.usuario.senha == null || this.usuario.senha == "")
-            return false;
-
+        if (this.usuario.nome      == null || this.usuario.nome      === ''
+         || this.usuario.sobreNome == null || this.usuario.sobreNome === ''
+         || this.usuario.email     == null || this.usuario.email     === ''
+         || this.usuario.senha     == null || this.usuario.senha     === '') {
+          return false;
+        }
         return true;
     }
 }
