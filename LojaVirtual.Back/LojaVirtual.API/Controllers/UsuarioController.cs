@@ -19,7 +19,7 @@ namespace LojaVirtual.API.Controllers
         {
             try
             {
-                return Ok();
+                return Ok("API rodando...");
             }
             catch(Exception ex)
             {

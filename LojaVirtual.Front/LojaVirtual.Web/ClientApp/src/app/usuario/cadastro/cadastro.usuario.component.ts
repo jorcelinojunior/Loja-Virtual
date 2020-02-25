@@ -28,14 +28,14 @@ export class CadastroUsuarioComponent implements OnInit {
         this.usuarioServico.cadastrarUsuario(this.usuario)
             .subscribe(
                 usuarioJson => {
-                    this.ativar_spinner = false;
                     this.usuarioCadastrado = true;
                     this.mensagem = "";
+                    this.ativar_spinner = false;
                 },
                 err => {
-                    this.ativar_spinner = false;
                     this.usuarioCadastrado = false;
                     this.mensagem = err.error;
+                    this.ativar_spinner = false;
                 }
             );
     }

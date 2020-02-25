@@ -3,3 +3,7 @@
 .custom-file-label::after {
     content: "Selecionar" !important;
 }
+.btn-cadastrar:disabled {
+    pointer-events: auto !important;
+    cursor: not-allowed !important;
+}

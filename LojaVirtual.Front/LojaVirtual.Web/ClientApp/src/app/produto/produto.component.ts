@@ -22,15 +22,18 @@ export class ProdutoComponent implements OnInit { // Padr√£o adotado por conven√
     }
 
     public inputChange(files: FileList) {
+        this.ativar_spinner     = true;
         this.arquivoSelecionado = files.item(0);
-        //alert(this.arquivoSelecionado.name);
         this.produtoServico.enviarArquivo(this.arquivoSelecionado)
             .subscribe(
-                success => {
-                    console.log(success);
+                nomeArquivo => {
+                    this.produto.nomeArquivo = nomeArquivo;
+                    console.log(nomeArquivo);
+                    this.ativar_spinner = false;
                 },
                 err => {
                     console.log(err.error);
+                    this.ativar_spinner = false;
                 }
             );
     }
@@ -60,6 +63,4 @@ export class ProdutoComponent implements OnInit { // Padr√£o adotado por conven√
 
         return true;
     }
-
-
 }

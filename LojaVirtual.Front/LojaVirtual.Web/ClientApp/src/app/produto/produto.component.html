@@ -24,7 +24,7 @@
 
     <div class="form-label-group">
         <input type="text" id="inputDescricao"
-               name="descricaoProduto" placeholder="DescriÃ§Ã£o"
+               name="descricaoProduto" placeholder="DescriÃ§ão"
                class="form-control"
                [ngClass]="{
         'is-invalid': descricao.invalid && (descricao.dirty || descricao.touched),
@@ -35,15 +35,15 @@
                required />
 
         <div class="invalid-feedback" *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
-            <div *ngIf="descricao.errors.required">A descriÃ§Ã£o do produto deve ser preenchido.</div>
+            <div *ngIf="descricao.errors.required">A descrição do produto deve ser preenchido.</div>
         </div>
 
-        <label for="inputDescricao">DescriÃ§Ã£o do produto</label>
+        <label for="inputDescricao">Descrição do produto</label>
     </div>
 
     <div class="form-label-group">
         <input type="number" id="inputPreco"
-               name="precoProduto" placeholder="PreÃ§o"
+               name="precoProduto" placeholder="Preço"
                class="form-control"
                [ngClass]="{
         'is-invalid': preco.invalid && (preco.dirty || preco.touched),
@@ -54,10 +54,10 @@
                required />
 
         <div class="invalid-feedback" *ngIf="preco.invalid && (preco.dirty || preco.touched)">
-            <div *ngIf="preco.errors.required">O preÃ§o do produto deve ser preenchido.</div>
+            <div *ngIf="preco.errors.required">O preço do produto deve ser preenchido.</div>
         </div>
 
-        <label for="inputPreco">PreÃ§o do produto</label>
+        <label for="inputPreco">Preço do produto</label>
     </div>
 
     <div class="input-group">
@@ -67,9 +67,10 @@
         </div>
     </div>
 
-    <button class="btn btn-primary btn-block mt-4" type="submit" (click)="cadastrar()" [disabled]="ativar_spinner || !formIsValid()">
+    <button class="btn btn-primary btn-block mt-4 btn-cadastrar" type="submit" (click)="cadastrar()" [disabled]="ativar_spinner || !formIsValid()">
         <span *ngIf="ativar_spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-        <span *ngIf="!ativar_spinner">Cadastrar</span>
+        <span *ngIf="!this.ativar_spinner">Cadastrar</span>
+        <span *ngIf="this.ativar_spinner"> Cadastrando</span>
     </button>
 
 
