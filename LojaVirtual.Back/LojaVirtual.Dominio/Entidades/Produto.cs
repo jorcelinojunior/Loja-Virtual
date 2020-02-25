@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace LojaVirtual.Dominio.Entidades
 {
@@ -8,6 +8,7 @@ namespace LojaVirtual.Dominio.Entidades
         public string Nome { get; set; }
         public string Descricao { get; set; }
         public Decimal Preco { get; set; }
+        public string NomeArquivo { get; set; }
 
         public override void Validate()
         {
@@ -15,7 +16,7 @@ namespace LojaVirtual.Dominio.Entidades
                 AdicionarCritica("Nome do produto não pode estar vazio.");
 
             if (string.IsNullOrEmpty(Descricao))
-                AdicionarCritica("Descricao do produto não pode estar vazio.");
+                AdicionarCritica("Descrição do produto não pode estar vazio.");
         }
     }
 }

@@ -1,4 +1,4 @@
-﻿using LojaVirtual.Dominio.Contratos;
+using LojaVirtual.Dominio.Contratos;
 using LojaVirtual.Dominio.Entidades;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -76,7 +76,6 @@ namespace LojaVirtual.API.Controllers
             {
                 return BadRequest(ex.ToString());
             }
-
         }
 
         private static string GerarNovoNome(string nomeArquivo)

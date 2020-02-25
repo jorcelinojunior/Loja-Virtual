@@ -24,7 +24,7 @@
 
     <div class="form-label-group">
         <input type="text" id="inputDescricao"
-               name="descricaoProduto" placeholder="DescriÃ§ão"
+               name="descricaoProduto" placeholder="DescriÃ§Ã£o"
                class="form-control"
                [ngClass]="{
         'is-invalid': descricao.invalid && (descricao.dirty || descricao.touched),
@@ -35,15 +35,15 @@
                required />
 
         <div class="invalid-feedback" *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
-            <div *ngIf="descricao.errors.required">A descrição do produto deve ser preenchido.</div>
+            <div *ngIf="descricao.errors.required">A descriÃ§Ã£o do produto deve ser preenchido.</div>
         </div>
 
-        <label for="inputDescricao">Descrição do produto</label>
+        <label for="inputDescricao">DescriÃ§Ã£o do produto</label>
     </div>
 
     <div class="form-label-group">
         <input type="number" id="inputPreco"
-               name="precoProduto" placeholder="Preço"
+               name="precoProduto" placeholder="PreÃ§o"
                class="form-control"
                [ngClass]="{
         'is-invalid': preco.invalid && (preco.dirty || preco.touched),
@@ -54,10 +54,10 @@
                required />
 
         <div class="invalid-feedback" *ngIf="preco.invalid && (preco.dirty || preco.touched)">
-            <div *ngIf="preco.errors.required">O preço do produto deve ser preenchido.</div>
+            <div *ngIf="preco.errors.required">O preÃ§o do produto deve ser preenchido.</div>
         </div>
 
-        <label for="inputPreco">Preço do produto</label>
+        <label for="inputPreco">PreÃ§o do produto</label>
     </div>
 
     <div class="input-group">
