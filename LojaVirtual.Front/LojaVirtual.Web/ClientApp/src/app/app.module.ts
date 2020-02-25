@@ -9,12 +9,13 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ProdutoComponent } from './produto/produto.component';
 import { LoginComponent } from './usuario/login/login.component';
-import { CadastroUsuarioComponent } from './usuario/cadastro/cadastro.usuario.component'; 
+import { CadastroUsuarioComponent } from './usuario/cadastro/cadastro.usuario.component';
 
 import { GuardaRotas } from './autorizacao/guarda.rotas';
 
 import { UsuarioServico } from './servicos/usuario/usuario.servico';
 import { ProdutoServico } from './servicos/produto/produto.servico';
+import { PesquisaProdutoComponent } from './produto/pesquisa/pesquisa.produto.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { ProdutoServico } from './servicos/produto/produto.servico';
     ProdutoComponent,
     LoginComponent,
     CadastroUsuarioComponent,
+    PesquisaProdutoComponent
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -35,6 +37,7 @@ import { ProdutoServico } from './servicos/produto/produto.servico';
       { path: 'produto', component: ProdutoComponent },
       { path: 'entrar', component: LoginComponent },
       { path: 'novo-usuario', component: CadastroUsuarioComponent },
+      { path: 'pesquisar-produto', component: PesquisaProdutoComponent },
 
     ])
   ],

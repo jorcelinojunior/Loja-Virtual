@@ -27,11 +27,7 @@ namespace LojaVirtual.API.Controllers
         {
             try
             {
-                return Ok(_produtoRepositorio.ObterTodos());
-                //if(condicao == false)
-                //{
-                //    return BadRequest("Aconteceu um erro devido à XYZ");
-                //}
+                return Json(_produtoRepositorio.ObterTodos());
             }
             catch (Exception ex)
             {
