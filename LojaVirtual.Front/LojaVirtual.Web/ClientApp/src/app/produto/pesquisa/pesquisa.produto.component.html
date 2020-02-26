@@ -24,7 +24,7 @@
             <td>{{p.nome}}</td>
             <td>{{p.descricao}}</td>
             <td>R$ {{p.preco}}</td>
-            <td><img *ngIf='p.nomeArquivo' src="https://localhost:44321/arquivos/{{p.nomeArquivo}}"
+            <td><img *ngIf='p.nomeArquivo' src="https://localhost:5001/arquivos/{{p.nomeArquivo}}"
                 style='max-width: 100px; height:auto;'></td>
             <td><button class="btn btn-success btn-sm" (click)='editarProduto(p)'>Editar</button></td>
             <td><button class="btn btn-danger btn-sm" (click)='deletarProduto(p)'>Deletar</button></td>

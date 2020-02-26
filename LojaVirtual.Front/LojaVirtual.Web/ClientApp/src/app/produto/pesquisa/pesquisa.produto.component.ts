@@ -4,7 +4,7 @@ import { ProdutoServico } from 'src/app/servicos/produto/produto.servico';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'pesquisa-produto',
+  selector: 'app-pesquisa-produto',
   templateUrl: './pesquisa.produto.component.html'
 })
 export class PesquisaProdutoComponent implements OnInit {

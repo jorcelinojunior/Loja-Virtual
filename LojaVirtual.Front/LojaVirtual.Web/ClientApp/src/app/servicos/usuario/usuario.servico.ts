@@ -11,7 +11,7 @@ export class UsuarioServico {
     private _usuario: Usuario;
 
     constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-        this.baseUrl = "https://localhost:44321/";
+        this.baseUrl = "https://localhost:5001/";
     }
 
     set usuario(usuario: Usuario) {

@@ -14,7 +14,7 @@ export class ProdutoServico implements OnInit {
     public produtos: Produto[];
 
     constructor(private http: HttpClient, @Inject('BASE_URL') baseUrl: string) {
-        this.baseUrl = 'https://localhost:44321/';
+        this.baseUrl = 'https://localhost:5001/';
     }
 
     ngOnInit(): void {
