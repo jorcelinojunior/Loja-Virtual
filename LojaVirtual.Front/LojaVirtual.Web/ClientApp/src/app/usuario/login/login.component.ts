@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         this.usuarioServico.verificarUsuario(this.usuario)
             .subscribe(
                 usuario_json => {
-                    //executado caso n�o aconte�a erro, usu�rio v�lido
+                    //executado caso não aconteça erro, usuário válido
                     this.ativar_spinner = false;
                     this.usuarioServico.usuario = usuario_json;
 

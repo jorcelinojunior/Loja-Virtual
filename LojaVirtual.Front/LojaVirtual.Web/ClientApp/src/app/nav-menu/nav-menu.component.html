@@ -13,7 +13,7 @@
                     </li>
 
                     <li class="nav-item" [routerLinkActive]='["link-active"]'>
-                        <a class="nav-link text-dark" [routerLink]='["/produto"]'>Produto</a>
+                        <a class="nav-link text-dark" [routerLink]='["/pesquisar-produto"]'>Produto</a>
                     </li>
 
                     <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="!usuarioLogado()">
@@ -21,7 +21,7 @@
                     </li>
 
                     <li class="dropdown show nav-item" *ngIf="usuarioLogado()">
-                        <a class="nav-link dropdown-toggle text-capitalize text-dark" href="#" role="button" id="linkMenu" 
+                        <a class="nav-link dropdown-toggle text-capitalize text-dark" href="#" role="button" id="linkMenu"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             {{usuario.nome}}
                         </a>

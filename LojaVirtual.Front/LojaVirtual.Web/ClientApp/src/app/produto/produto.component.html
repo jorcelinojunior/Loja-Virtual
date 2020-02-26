@@ -73,6 +73,8 @@
         <span *ngIf="this.ativar_spinner"> Cadastrando</span>
     </button>
 
+    <button class='btn btn-secondary btn-block mt-2' [routerLink]="['/pesquisar-produto']">Cancelar</button>
+
     <div class="alert alert-danger mt-3 text-center" *ngIf="mensagem">
       {{mensagem}}
     </div>

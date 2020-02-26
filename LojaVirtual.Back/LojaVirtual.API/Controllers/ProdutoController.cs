@@ -44,12 +44,31 @@ namespace LojaVirtual.API.Controllers
                 if(!produto.EhValido){
                     return BadRequest(produto.ObterMensagensValidacao());
                 }
-                _produtoRepositorio.Adicionar(produto);
+
+                if(produto.Id > 0){
+                    _produtoRepositorio.Atualizar(produto);
+                }else {
+                    _produtoRepositorio.Adicionar(produto);
+                }
+                
                 return Created("api/produto", produto);
             }
             catch (Exception ex)
             {
                 return BadRequest(ex.ToString());
+            }
+        }
+
+        [HttpPost("Deletar")]
+        public IActionResult Deletar([FromBody] Produto produto)
+        {
+            try
+            {   
+                // produto recebido no FromBody deve ter a propriedade ID maior > 0
+                _produtoRepositorio.Remover(produto);
+                return Json(_produtoRepositorio.ObterTodos());
+            } catch(Exception e) {
+                return BadRequest(e.ToString());
             }
         }
 

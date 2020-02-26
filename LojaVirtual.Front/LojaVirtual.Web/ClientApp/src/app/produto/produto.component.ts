@@ -1,11 +1,12 @@
-﻿import { Component, OnInit } from "@angular/core";
-import { ProdutoServico } from "../servicos/produto/produto.servico";
-import { Produto } from "../Model/produto";
+﻿import { Component, OnInit } from '@angular/core';
+import { ProdutoServico } from '../servicos/produto/produto.servico';
+import { Produto } from '../Model/produto';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-produto",
-  templateUrl: "./produto.component.html",
-  styleUrls: ["./produto.component.css"]
+  selector: 'app-produto',
+  templateUrl: './produto.component.html',
+  styleUrls: ['./produto.component.css']
 })
 export class ProdutoComponent implements OnInit {
   // Padrão adotado por convenção de PascalCase
@@ -14,10 +15,15 @@ export class ProdutoComponent implements OnInit {
   public arquivoSelecionado: File;
   public mensagem: string;
 
-  constructor(private produtoServico: ProdutoServico) {}
+  constructor(private produtoServico: ProdutoServico, private router: Router) {}
 
   ngOnInit() {
-    this.produto = new Produto();
+    const produtoSession = sessionStorage.getItem('produtoSession');
+    if (produtoSession) {
+      this.produto = JSON.parse(produtoSession);
+    } else {
+      this.produto = new Produto();
+    }
   }
 
   public inputChange(files: FileList): void {
@@ -42,8 +48,8 @@ export class ProdutoComponent implements OnInit {
     this.ativarEspera();
     this.produtoServico.cadastrar(this.produto).subscribe(
       produtoJson => {
-
         this.desativarEspera();
+        this.router.navigate(['/pesquisar-produto']);
       },
       err => {
         console.log(err.error);
