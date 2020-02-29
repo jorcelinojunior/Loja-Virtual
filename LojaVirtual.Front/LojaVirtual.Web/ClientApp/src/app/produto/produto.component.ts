@@ -10,10 +10,11 @@ import { Router } from '@angular/router';
 })
 export class ProdutoComponent implements OnInit {
   // Padrão adotado por convenção de PascalCase
-  private ativar_spinner: boolean;
+  public ativar_spinner: boolean;
   public produto: Produto;
   public arquivoSelecionado: File;
   public mensagem: string;
+  public cadastrarAtualizar: string ;
 
   constructor(private produtoServico: ProdutoServico, private router: Router) {}
 
@@ -21,8 +22,10 @@ export class ProdutoComponent implements OnInit {
     const produtoSession = sessionStorage.getItem('produtoSession');
     if (produtoSession) {
       this.produto = JSON.parse(produtoSession);
+      this.cadastrarAtualizar = 'Salvar alterações';
     } else {
       this.produto = new Produto();
+      this.cadastrarAtualizar = 'Cadastrar';
     }
   }
 

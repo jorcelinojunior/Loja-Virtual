@@ -1,14 +1,15 @@
-import { Component, OnInit } from "@angular/core";
-import { Produto } from "src/app/Model/produto";
-import { ProdutoServico } from "src/app/servicos/produto/produto.servico";
+import { Component, OnInit } from '@angular/core';
+import { Produto } from 'src/app/Model/produto';
+import { ProdutoServico } from 'src/app/servicos/produto/produto.servico';
 
 @Component({
-  selector: "app-loja",
-  templateUrl: "./loja.pesquisa.component.html",
-  styleUrls: ["./loja.pesquisa.component.css"]
+  selector: 'app-loja',
+  templateUrl: './loja.pesquisa.component.html',
+  styleUrls: ['./loja.pesquisa.component.css']
 })
+
 export class LojaPesquisaComponent implements OnInit {
-  public produtos : Produto[];
+  public produtos: Produto[];
   ngOnInit(): void {}
   constructor(private produtoServico: ProdutoServico) {
     this.produtoServico.obterTodosProdutos()
@@ -20,6 +21,10 @@ export class LojaPesquisaComponent implements OnInit {
         err => {
           console.log(err.error);
         }
-      )
+      );
+  }
+
+  public abrirProduto(produto: Produto) {
+    alert(produto.nome);
   }
 }

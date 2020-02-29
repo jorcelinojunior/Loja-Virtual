@@ -32,10 +32,12 @@
       }"
                [(ngModel)]="this.produto.descricao"
                #descricao="ngModel"
-               required />
+               required
+               minlength="50"/>
 
         <div class="invalid-feedback" *ngIf="descricao.invalid && (descricao.dirty || descricao.touched)">
             <div *ngIf="descricao.errors.required">A descrição do produto deve ser preenchido.</div>
+            <div *ngIf="descricao.errors.minlength">A descrição deve conter mais que 50 caracteres.</div>
         </div>
 
         <label for="inputDescricao">Descrição do produto</label>
@@ -69,7 +71,7 @@
 
     <button class="btn btn-primary btn-block mt-4 btn-cadastrar" type="submit" (click)="cadastrar()" [disabled]="ativar_spinner || !formIsValid()">
         <span *ngIf="ativar_spinner" class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span>
-        <span *ngIf="!this.ativar_spinner">Cadastrar</span>
+        <span *ngIf="!this.ativar_spinner">{{cadastrarAtualizar}}</span>
         <span *ngIf="this.ativar_spinner"> Cadastrando</span>
     </button>
 

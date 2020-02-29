@@ -25,6 +25,7 @@ export class PesquisaProdutoComponent implements OnInit {
   }
 
   public adicionarProduto() {
+    sessionStorage.removeItem('produtoSession');
     this.router.navigate(['/produto']);
   }
 

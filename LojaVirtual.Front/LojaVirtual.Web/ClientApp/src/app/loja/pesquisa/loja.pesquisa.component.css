@@ -1,0 +1,8 @@
+.card{
+  transition: all .1s ease-in-out;
+}
+.card:hover{
+  box-shadow: 0 1rem 3rem rgba(0, 0, 0, 0.175) !important;
+  transform: scale(1.005);
+  cursor: pointer;
+}
