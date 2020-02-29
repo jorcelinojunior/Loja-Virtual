@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Produto } from 'src/app/Model/produto';
 import { ProdutoServico } from 'src/app/servicos/produto/produto.servico';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-loja',
@@ -11,7 +12,8 @@ import { ProdutoServico } from 'src/app/servicos/produto/produto.servico';
 export class LojaPesquisaComponent implements OnInit {
   public produtos: Produto[];
   ngOnInit(): void {}
-  constructor(private produtoServico: ProdutoServico) {
+
+  constructor(private produtoServico: ProdutoServico, private router: Router) {
     this.produtoServico.obterTodosProdutos()
       .subscribe(
         prodReturned => {
@@ -25,6 +27,7 @@ export class LojaPesquisaComponent implements OnInit {
   }
 
   public abrirProduto(produto: Produto) {
-    alert(produto.nome);
+    sessionStorage.setItem('produtoDetalhe', JSON.stringify(produto));
+    this.router.navigate(['loja-produto']);
   }
 }

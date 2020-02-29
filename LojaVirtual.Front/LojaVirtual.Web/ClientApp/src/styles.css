@@ -19,3 +19,5 @@ img.loading{
   display: block;
   margin: 0 auto;
 }
+
+.rounded{border-radius: 5px !important;}

@@ -2,7 +2,7 @@
 
 <div class="container" *ngIf="produtos">
   <div class="row">
-    <div class="col-12 col-md-4 mb-4" *ngFor="let p of produtos">
+    <div class="col-6 col-md-3 mb-4" *ngFor="let p of produtos">
       <a (click)="abrirProduto(p)">
         <div class="card">
           <img class="card-img-top" src="https://localhost:5001/arquivos/{{p.nomeArquivo}}" alt="{{p.nome}}">
