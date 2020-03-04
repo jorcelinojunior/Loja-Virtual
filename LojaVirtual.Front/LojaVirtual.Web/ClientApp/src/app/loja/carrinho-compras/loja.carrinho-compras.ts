@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { Produto } from 'src/app/Model/produto';
 
 export class LojaCarrinhoCompras implements OnInit {
+
   public produtos: Produto[] = [];
 
   ngOnInit(): void {}
 
   public adicionar(produto: Produto) {
     const produtoLocalStorage = localStorage.getItem('produtoLocalStorage');
-    if (!produto.quantidade){
+    if (!produto.quantidade) {
       produto.quantidade = 1;
     } else {
       produto.quantidade++;
@@ -16,7 +17,6 @@ export class LojaCarrinhoCompras implements OnInit {
     if (!produtoLocalStorage) {
       // se não existir nada dentro do localStorage
       this.produtos.push(produto);
-
     } else {
       this.produtos = JSON.parse(produtoLocalStorage);
       this.produtos.push(produto);
@@ -30,6 +30,7 @@ export class LojaCarrinhoCompras implements OnInit {
     if (produtoLocalStorage) {
       return JSON.parse(produtoLocalStorage);
     }
+    return this.produtos;
   }
 
   public removerProduto(produto: Produto) {
@@ -46,5 +47,16 @@ export class LojaCarrinhoCompras implements OnInit {
 
   public atualizar(produtos: Produto[]) {
     localStorage.setItem('produtoLocalStorage', JSON.stringify(produtos));
+  }
+
+  public temItensCarrinhoCompras() {
+    const itens = this.obterProdutos();
+
+    return itens.length > 0;
+  }
+
+  public limparCarrinhoCompras() {
+    // localStorage.removeItem('produtoLocalStorage');
+    localStorage.setItem('produtoLocalStorage','');
   }
 }

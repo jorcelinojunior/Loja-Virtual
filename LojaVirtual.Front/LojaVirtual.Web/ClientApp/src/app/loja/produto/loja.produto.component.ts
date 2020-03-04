@@ -3,6 +3,7 @@ import { ProdutoServico } from 'src/app/servicos/produto/produto.servico';
 import { Produto } from 'src/app/Model/produto';
 import { Router } from '@angular/router';
 import { LojaCarrinhoCompras } from '../carrinho-compras/loja.carrinho-compras';
+import { BaseUrlServico } from 'src/app/servicos/base-url/base-url.servico';
 
 @Component({
   selector: 'app-loja-produto',
@@ -13,6 +14,7 @@ import { LojaCarrinhoCompras } from '../carrinho-compras/loja.carrinho-compras';
 export class LojaProdutoComponent implements OnInit {
   public produto: Produto;
   public carrinhosCompras: LojaCarrinhoCompras;
+  public hostname: string;
 
   ngOnInit(): void {
     this.carrinhosCompras = new LojaCarrinhoCompras();
@@ -22,8 +24,8 @@ export class LojaProdutoComponent implements OnInit {
     }
   }
 
-  constructor(private produtoServico: ProdutoServico, private router: Router){
-
+  constructor(private produtoServico: ProdutoServico, private router: Router, private baseUrl: BaseUrlServico) {
+    this.hostname = baseUrl.hostName;
   }
 
   public comprar() {

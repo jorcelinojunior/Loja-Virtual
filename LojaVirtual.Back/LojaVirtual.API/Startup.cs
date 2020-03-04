@@ -40,7 +40,8 @@ namespace LojaVirtual.API
                        .AllowAnyHeader();
             }));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddJsonOptions(options => options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
             services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
             services.Configure<MvcOptions>(options =>
             {
@@ -56,6 +57,7 @@ namespace LojaVirtual.API
             // Fazendo infeção de dependência  
             services.AddScoped<IProdutoRepositorio, ProdutoRepositorio>();
             services.AddScoped<IUsuarioRepositorio, UsuarioRepositorio>();
+            services.AddScoped<IPedidoRepositorio, PedidoRepositorio>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

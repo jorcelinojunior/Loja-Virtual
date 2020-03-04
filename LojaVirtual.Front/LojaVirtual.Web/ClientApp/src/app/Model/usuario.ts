@@ -4,4 +4,5 @@ export class Usuario {
   sobreNome: string;
   email: string;
   senha: string;
+  ehAdministrador: boolean;
 }

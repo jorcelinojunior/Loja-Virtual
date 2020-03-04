@@ -12,7 +12,7 @@
                         <a class="nav-link text-dark" [routerLink]='["/"]'>Home</a>
                     </li>
 
-                    <li class="nav-item" [routerLinkActive]='["link-active"]'>
+                    <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="usuario_administrador()">
                         <a class="nav-link text-dark" [routerLink]='["/pesquisar-produto"]'>Produto</a>
                     </li>
 
@@ -28,6 +28,11 @@
                         <ul class="dropdown-menu" aria-labelledby="linkMenu">
                             <li class="dropdown-item" role="menu" (click)="sair()">Sair</li>
                         </ul>
+                    </li>
+
+                    <li class="nav-item" [routerLinkActive]='["link-active"]' *ngIf="temItensCarrinhoCompras()">
+                        <a class="nav-link text-dark" [routerLink]='["/loja-efetivar"]'>
+                          <img class="" style="max-width: 22px; height: auto;" src="./../../assets/images/smart-cart.png" alt="Meu carrinho"></a>
                     </li>
 
                 </ul>

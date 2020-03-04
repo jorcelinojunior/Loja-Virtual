@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Produto } from 'src/app/Model/produto';
 import { ProdutoServico } from 'src/app/servicos/produto/produto.servico';
 import { Router } from '@angular/router';
+import { BaseUrlServico } from 'src/app/servicos/base-url/base-url.servico';
 
 @Component({
   selector: 'app-pesquisa-produto',
@@ -9,10 +10,12 @@ import { Router } from '@angular/router';
 })
 export class PesquisaProdutoComponent implements OnInit {
   public produtos: Produto[];
+  public hostname: string;
 
   ngOnInit(): void {}
 
-  constructor(private produtoServico: ProdutoServico, private router: Router) {
+  constructor(private produtoServico: ProdutoServico,private router: Router, private baseUrl: BaseUrlServico) {
+    this.hostname = baseUrl.hostName;
     this.produtoServico.obterTodosProdutos()
       .subscribe(
         produtos => {
@@ -31,13 +34,11 @@ export class PesquisaProdutoComponent implements OnInit {
 
   public deletarProduto(produto: Produto) {
     const retorno = confirm('Deseja realmente deletar o produto selecionado?');
-    alert('retorno: ' + retorno);
     if(retorno == true) {
       this.produtoServico.deletar(produto)
         .subscribe(
           products => {
             this.produtos = products;
-            console.log(products);
           },
           err => {
             console.log(err.error);

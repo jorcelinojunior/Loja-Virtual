@@ -9,6 +9,7 @@ namespace LojaVirtual.Dominio.Entidades
         public string Senha { get; set; }
         public string Nome { get; set; }
         public string SobreNome { get; set; }
+        public bool EhAdministrador { get; set; }
 
         /// <summary>
         /// Um usuário pode ter nenhum ou muitos pedidos

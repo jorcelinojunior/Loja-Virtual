@@ -15,7 +15,7 @@
         <tbody>
           <tr *ngFor="let p of produtos">
             <td><img class="img-fluid img-thumbnail" style="max-width: 70px;"
-                src="https://localhost:5001/arquivos/{{p.nomeArquivo}}" alt="{{p.nome}}"></td>
+                src="{{this.hostname}}arquivos/{{p.nomeArquivo}}" alt="{{p.nome}}"></td>
             <td><p class="h6">{{p.nome}}</p></td>
             <td>
               <div class="number-input md-number-input">
@@ -30,6 +30,7 @@
         </tbody>
       </table>
     </div>
+
     <div class="col-md-3">
       <div class="row">
         <div class="card w-100">
@@ -38,13 +39,14 @@
             <table>
               <tr>
                 <td>Total:</td>
-                <td><strong>R$ 2548,45</strong></td>
+                <td><strong>R$ {{total | number:'1.0-2'}}</strong></td>
               </tr>
             </table>
-            <a class="btn btn-danger">Efetivar Compra</a>
+            <a class="btn btn-danger w-100 text-white mt-4" (click)="efetivarCompra()">Efetivar Compra</a>
           </div>
         </div>
       </div>
     </div>
+
   </div>
 </div>

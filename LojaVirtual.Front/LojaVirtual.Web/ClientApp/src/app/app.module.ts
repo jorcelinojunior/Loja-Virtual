@@ -16,10 +16,13 @@ import { GuardaRotas } from './autorizacao/guarda.rotas';
 
 import { UsuarioServico } from './servicos/usuario/usuario.servico';
 import { ProdutoServico } from './servicos/produto/produto.servico';
+import { PedidoServico } from './servicos/pedido/pedido.servico';
 import { PesquisaProdutoComponent } from './produto/pesquisa/pesquisa.produto.component';
 import { LojaPesquisaComponent } from './loja/pesquisa/loja.pesquisa.component';
 import { LojaProdutoComponent } from './loja/produto/loja.produto.component';
 import { LojaEfetivarComponent } from './loja/efetivar/loja.efetivar.component';
+import { CompraSucessoComponent } from './loja/efetivar/compra-sucesso/compra-sucesso.component';
+import { BaseUrlServico } from './servicos/base-url/base-url.servico';
 
 @NgModule({
   declarations: [
@@ -33,6 +36,7 @@ import { LojaEfetivarComponent } from './loja/efetivar/loja.efetivar.component';
     LojaPesquisaComponent,
     LojaProdutoComponent,
     LojaEfetivarComponent,
+    CompraSucessoComponent,
   ],
   imports: [
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
@@ -41,17 +45,18 @@ import { LojaEfetivarComponent } from './loja/efetivar/loja.efetivar.component';
     TruncateModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' },
-      //{ path: 'produto', component: ProdutoComponent, canActivate: [GuardaRotas] },
-      { path: 'produto', component: ProdutoComponent },
+      { path: 'produto', component: ProdutoComponent, canActivate: [GuardaRotas] },
+      // { path: 'produto', component: ProdutoComponent },
       { path: 'entrar', component: LoginComponent },
       { path: 'novo-usuario', component: CadastroUsuarioComponent },
-      { path: 'pesquisar-produto', component: PesquisaProdutoComponent },
+      { path: 'pesquisar-produto', component: PesquisaProdutoComponent, canActivate: [GuardaRotas] },
       { path: 'loja-produto', component: LojaProdutoComponent },
-      { path: 'loja-efetivar', component: LojaEfetivarComponent },
+      { path: 'loja-efetivar', component: LojaEfetivarComponent, canActivate: [GuardaRotas] },
+      { path: 'compra-realizada-sucesso', component: CompraSucessoComponent },
 
     ])
   ],
-  providers: [ UsuarioServico, ProdutoServico ],
+  providers: [ UsuarioServico, ProdutoServico, PedidoServico, BaseUrlServico],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

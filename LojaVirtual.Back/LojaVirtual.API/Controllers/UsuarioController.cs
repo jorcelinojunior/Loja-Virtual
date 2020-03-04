@@ -55,6 +55,8 @@ namespace LojaVirtual.API.Controllers
                 if(usuarioCadastrado != null)
                     return BadRequest("Usuário já cadastrado no sistema.");
                 
+                // usuario.EhAdministrador = true;
+
                 _usuarioRepositorio.Adicionar(usuario);
                 return Ok();
             }

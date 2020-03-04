@@ -36,7 +36,6 @@ export class ProdutoComponent implements OnInit {
       nomeArquivo => {
         this.mensagem = '';
         this.produto.nomeArquivo = nomeArquivo;
-        console.log(nomeArquivo);
         this.ativar_spinner = false;
       },
       err => {
